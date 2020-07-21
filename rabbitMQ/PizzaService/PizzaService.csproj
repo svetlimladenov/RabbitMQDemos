@@ -13,5 +13,6 @@
 
     <ItemGroup>
     <ProjectReference Include="..\Queues\Queues.csproj" />
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
   </Project>

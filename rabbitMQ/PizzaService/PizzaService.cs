@@ -4,45 +4,31 @@ using Microsoft.Extensions.Hosting;
 using RabbitMQ;
 using RabbitMQ.Client;
 using Queues;
-using RabbitMQ.Client.Events;
-using System.Text;
 
 namespace PizzaService
 {
     public class PizzaService : IHostedService
     {
-        public PizzaService(string hostName = "localhost")
+        // Injected
+        private IModel channel;   
+        public PizzaService(IModel channel, PizzaConsumer pizzaConsumer)
         {
-            this.connectionFactory = new ConnectionFactory();
-            this.connectionFactory.HostName = hostName;
+            this.channel = channel;
+            this.PizzaConsumer = pizzaConsumer;
         }
 
-        private readonly ConnectionFactory connectionFactory; 
-        private IConnection connection;       
-        private IModel channel;   
+        public PizzaConsumer PizzaConsumer { get; set; }
 
         public Task StartAsync(CancellationToken cancellationToken)
         {
-            this.connection = this.connectionFactory.CreateConnection();
-            this.channel = this.connection.CreateModel();
-
             this.channel.QueueDeclare(QueueNames.CoolQueue, true, false, false, null);
-            var consumer = new EventingBasicConsumer(this.channel);
-            consumer.Received += (sender, ea) => {
-                var body = ea.Body.ToArray();
-                var message = Encoding.UTF8.GetString(body);
-                System.Console.WriteLine(message);
-            };
-
-            System.Console.WriteLine("Waiting for messages");
-            this.channel.BasicConsume(QueueNames.CoolQueue, true, consumer);
+            this.channel.BasicConsume(QueueNames.CoolQueue, true, this.PizzaConsumer);
             return Task.CompletedTask;
         }
 
         public Task StopAsync(CancellationToken cancellationToken)
         {
             this.channel.Close();
-            this.connection.Close();
             return Task.CompletedTask;
         }
     }

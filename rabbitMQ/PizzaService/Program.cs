@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Infrastructure;
 using Serilog;
 
 namespace PizzaService
@@ -13,6 +14,8 @@ namespace PizzaService
             var builder = new HostBuilder()
                         .ConfigureServices((hostContext, services) => 
                         {
+                            services.AddRabbitMQ();
+                            services.AddSingleton<PizzaConsumer>();
                             services.AddHostedService<PizzaService>();
                         })
                         .ConfigureLogging((hostingContext, logging) => logging.AddSerilog());

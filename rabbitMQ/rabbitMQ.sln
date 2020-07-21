@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Queues", "Queues\Queues.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaService", "PizzaService\PizzaService.csproj", "{902B53CE-98C7-4D3D-BFED-5DE70C0D6A9E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{BD75C8CC-64EB-4588-BFC8-F627F5676DBF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{902B53CE-98C7-4D3D-BFED-5DE70C0D6A9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{902B53CE-98C7-4D3D-BFED-5DE70C0D6A9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{902B53CE-98C7-4D3D-BFED-5DE70C0D6A9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD75C8CC-64EB-4588-BFC8-F627F5676DBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD75C8CC-64EB-4588-BFC8-F627F5676DBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD75C8CC-64EB-4588-BFC8-F627F5676DBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD75C8CC-64EB-4588-BFC8-F627F5676DBF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
