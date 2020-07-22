@@ -19,32 +19,32 @@ namespace rabbitMQ
             IConnection connection = factory.CreateConnection();
             IModel channel = connection.CreateModel();
 
-            var myQueue = QueueNames.CoolQueue;
+            var rpcQueue = QueueNames.RPCQueue;
+            channel.QueueDeclare(rpcQueue, false, false, false, null);
+            var rcpCallerConsumer = new RpcCallerConsumer(channel);
+            //temporart, private autodelete reply queue
+            var replyQueue = channel.QueueDeclare().QueueName;
+            channel.BasicConsume(replyQueue, true, rcpCallerConsumer);
 
-            channel.QueueDeclare(myQueue, true, false, false, null);
 
-            Console.WriteLine("Type in messages");
-            while (true)
-            {
-                var message = CreateMessage();
-                channel.BasicPublish("", myQueue, null, message);
-            }
 
+
+            //Tuka suzdavame message koito e RPC - 
+            // setva mu se
+            // 1. correlation Id
+            // 2.Reply To - ime na queue do koeto da replyne
+
+            var properties = channel.CreateBasicProperties();
+            properties.CorrelationId = "moito correlation id guid";
+            properties.ReplyTo = replyQueue;
+            var nekuvMessage = Console.ReadLine();
+            var nekvoBody = Encoding.UTF8.GetBytes(nekuvMessage);
+            // publishvame rpc messagea
+            channel.BasicPublish("", rpcQueue, properties, nekvoBody);
+
+            Console.ReadLine();
             channel.Close();
             connection.Close();
-        }
-
-        private static byte[] CreateMessage()
-        {
-            var content = Console.ReadLine();
-            var message = new HelloMessage()
-            {
-                Id = 1,
-                MessageContent = content
-            };
-
-            var jsonMessage = JsonConvert.SerializeObject(message);
-            return Encoding.UTF8.GetBytes(jsonMessage);
         }
     }
 }

@@ -5,13 +5,13 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "rabbitMQ", "RabbitMQ\rabbitMQ.csproj", "{DEF7ADF3-6FDD-4EE3-B5E6-E3D26B7B2049}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecondUser", "SecondUser\SecondUser.csproj", "{12212F98-38C9-4D6D-815C-E8778ED71A37}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SecondUser", "SecondUser\SecondUser.csproj", "{12212F98-38C9-4D6D-815C-E8778ED71A37}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Queues", "Queues\Queues.csproj", "{A50DEE5A-3849-41D7-85BE-5EFC7407350F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Queues", "Queues\Queues.csproj", "{A50DEE5A-3849-41D7-85BE-5EFC7407350F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaService", "PizzaService\PizzaService.csproj", "{902B53CE-98C7-4D3D-BFED-5DE70C0D6A9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzaService", "PizzaService\PizzaService.csproj", "{902B53CE-98C7-4D3D-BFED-5DE70C0D6A9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{BD75C8CC-64EB-4588-BFC8-F627F5676DBF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{BD75C8CC-64EB-4588-BFC8-F627F5676DBF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

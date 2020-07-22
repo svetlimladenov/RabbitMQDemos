@@ -11,18 +11,25 @@ namespace PizzaService
     {
         // Injected
         private IModel channel;   
-        public PizzaService(IModel channel, PizzaConsumer pizzaConsumer)
+
+        private PizzaConsumer pizzaConsumer;
+
+        private RpcResponderConsumer rpcResponderConsumer;
+
+        public PizzaService(IModel channel, PizzaConsumer pizzaConsumer, RpcResponderConsumer rpcResponderConsumer)
         {
             this.channel = channel;
-            this.PizzaConsumer = pizzaConsumer;
+            this.pizzaConsumer = pizzaConsumer;
+            this.rpcResponderConsumer = rpcResponderConsumer;
         }
-
-        public PizzaConsumer PizzaConsumer { get; set; }
 
         public Task StartAsync(CancellationToken cancellationToken)
         {
-            this.channel.QueueDeclare(QueueNames.CoolQueue, true, false, false, null);
-            this.channel.BasicConsume(QueueNames.CoolQueue, true, this.PizzaConsumer);
+            // this.channel.QueueDeclare(QueueNames.CoolQueue, true, false, false, null);
+            // this.channel.BasicConsume(QueueNames.CoolQueue, true, this.pizzaConsumer);
+
+            this.channel.QueueDeclare(QueueNames.RPCQueue, false, false, false, null);
+            this.channel.BasicConsume(QueueNames.RPCQueue, true, this.rpcResponderConsumer);
             return Task.CompletedTask;
         }
 

@@ -16,6 +16,7 @@ namespace PizzaService
                         {
                             services.AddRabbitMQ();
                             services.AddSingleton<PizzaConsumer>();
+                            services.AddSingleton<RpcResponderConsumer>();
                             services.AddHostedService<PizzaService>();
                         })
                         .ConfigureLogging((hostingContext, logging) => logging.AddSerilog());
