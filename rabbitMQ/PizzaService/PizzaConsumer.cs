@@ -17,5 +17,11 @@ namespace PizzaService
             var message = Encoding.UTF8.GetString(bodyArray);
             Console.WriteLine(message);
         }
+
+        public void Publish(string message, string queue)
+        {
+            var body = Encoding.UTF8.GetBytes(message);
+            this.Model.BasicPublish("", queue, null, body);
+        }
     }
 }

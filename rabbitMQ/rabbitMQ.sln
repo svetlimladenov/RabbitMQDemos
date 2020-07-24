@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "rabbitMQ", "RabbitMQ\rabbitMQ.csproj", "{DEF7ADF3-6FDD-4EE3-B5E6-E3D26B7B2049}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SecondUser", "SecondUser\SecondUser.csproj", "{12212F98-38C9-4D6D-815C-E8778ED71A37}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Queues", "Queues\Queues.csproj", "{A50DEE5A-3849-41D7-85BE-5EFC7407350F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzaService", "PizzaService\PizzaService.csproj", "{902B53CE-98C7-4D3D-BFED-5DE70C0D6A9E}"
@@ -23,10 +21,6 @@ Global
 		{DEF7ADF3-6FDD-4EE3-B5E6-E3D26B7B2049}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DEF7ADF3-6FDD-4EE3-B5E6-E3D26B7B2049}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DEF7ADF3-6FDD-4EE3-B5E6-E3D26B7B2049}.Release|Any CPU.Build.0 = Release|Any CPU
-		{12212F98-38C9-4D6D-815C-E8778ED71A37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{12212F98-38C9-4D6D-815C-E8778ED71A37}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{12212F98-38C9-4D6D-815C-E8778ED71A37}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{12212F98-38C9-4D6D-815C-E8778ED71A37}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A50DEE5A-3849-41D7-85BE-5EFC7407350F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A50DEE5A-3849-41D7-85BE-5EFC7407350F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A50DEE5A-3849-41D7-85BE-5EFC7407350F}.Release|Any CPU.ActiveCfg = Release|Any CPU
