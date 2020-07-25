@@ -10,6 +10,7 @@ namespace Infrastructure
             var factory = new ConnectionFactory();
             factory.HostName = hostName;
 
+            // Remove this so the connection is created when needed.
             IConnection connection = factory.CreateConnection();
             IModel channel = connection.CreateModel();
 

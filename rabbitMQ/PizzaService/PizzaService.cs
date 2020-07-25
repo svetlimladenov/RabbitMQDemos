@@ -28,8 +28,11 @@ namespace PizzaService
             // this.channel.QueueDeclare(QueueNames.CoolQueue, true, false, false, null);
             // this.channel.BasicConsume(QueueNames.CoolQueue, true, this.pizzaConsumer);
 
-            this.channel.QueueDeclare(QueueNames.RPCQueue, false, false, false, null);
-            this.channel.BasicConsume(QueueNames.RPCQueue, true, this.rpcResponderConsumer);
+            //this.channel.QueueDeclare(QueueNames.RPCQueue, false, false, false, null);
+            //this.channel.BasicConsume(QueueNames.RPCQueue, true, this.rpcResponderConsumer);
+
+            this.channel.QueueDeclare(QueueNames.GetPizzas, true, false, false, null);
+            this.channel.BasicConsume(QueueNames.GetPizzas, true, this.pizzaConsumer);
             return Task.CompletedTask;
         }
 

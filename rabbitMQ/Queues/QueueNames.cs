@@ -11,5 +11,7 @@ namespace Queues
         public static string RPCQueue = "RpcReques";
 
         public static string ReplyQueue = "ReplyQueue";
+
+        public static string GetPizzas = "GetPizzas";
     }
 }
