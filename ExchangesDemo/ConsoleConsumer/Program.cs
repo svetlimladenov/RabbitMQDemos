@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using System.Threading.Tasks;
+using Infrastucture;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RabbitMQ.Client;
@@ -20,6 +21,8 @@ namespace ConsoleConsumer
         Host.CreateDefaultBuilder(args)
             .ConfigureServices((hostContext, services) =>
             {
+                
+                services.AddSingleton<IBus, BasicBus>();
                 services.AddSingleton<IHostedService, WeatherService>();
             });
     }

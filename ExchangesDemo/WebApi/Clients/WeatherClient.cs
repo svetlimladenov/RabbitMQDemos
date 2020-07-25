@@ -1,34 +1,23 @@
 using System;
 using System.Text;
+using Infrastucture;
 using RabbitMQ.Client;
 
 namespace WebApi.Clients
 {
     public class WeatherClient
     {
-        private readonly IModel channel;
-        private readonly IConnection connection;
-        public WeatherClient()
+        private readonly IBus bus;
+
+        public WeatherClient(IBus bus)
         {
-            var factory = new ConnectionFactory();
-            factory.HostName = "localhost";
-
-            this.connection = factory.CreateConnection();
-            this.channel = this.connection.CreateModel();
+            this.bus = bus;
         }
-
-        public void Stop()
-        {
-            this.channel.Close();
-            this.connection.Close();
-        }
-
         public void SaveInfo(string username)
         {
-            var message = Encoding.UTF8.GetBytes(username);
+            var message = "Hello " + username;
             var weatherExchange = "getWeather";
-            this.channel.ExchangeDeclare(weatherExchange, "fanout");
-            this.channel.BasicPublish(weatherExchange, "", null, message);
+            this.bus.Publish(weatherExchange, message);
         }
     }
 }
