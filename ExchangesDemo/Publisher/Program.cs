@@ -1,12 +1,22 @@
 ﻿using System;
+using System.Text;
+using RabbitMQ.Client;
 
 namespace Publisher
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var factory = new ConnectionFactory();
+            factory.HostName = "localhost";
+
+            using IConnection connection = factory.CreateConnection();
+            using IModel channel = connection.CreateModel();
+
+            var myExchange = "myExchange";
+            channel.ExchangeDeclare(myExchange, "fanout");
+            channel.BasicPublish(myExchange, "", null, Encoding.UTF8.GetBytes("supp"));
         }
     }
 }
