@@ -16,7 +16,9 @@ namespace ConsoleConsumer
         }
 
         public abstract Task StartAsync(CancellationToken cancellationToken);
+
         public abstract Task StopAsync(CancellationToken cancellationToken);
+        
         protected void Subscribe(string exchange, Action<string> action)
         {
             bus.Subscribe(exchange, action);
