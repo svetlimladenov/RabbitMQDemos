@@ -9,22 +9,20 @@ using Infrastucture;
 
 namespace ConsoleConsumer
 {
-    public class WeatherService : IHostedService
+    public class WeatherService : BaseService
     {
-        private readonly IBus bus;
-
         public WeatherService(IBus bus)
+            :base(bus)
         {
-            this.bus = bus;
         }
 
-        public Task StartAsync(CancellationToken cancellationToken)
+        public override Task StartAsync(CancellationToken cancellationToken)
         {
-            bus.Subscribe("getWeather", OnWeatherGetMessage);
+            Subscribe("getWeather", OnWeatherGetMessage);
             return Task.CompletedTask;
         }
 
-        public Task StopAsync(CancellationToken cancellationToken)
+        public override Task StopAsync(CancellationToken cancellationToken)
         {
             return Task.CompletedTask;
         }

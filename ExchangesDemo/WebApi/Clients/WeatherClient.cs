@@ -13,6 +13,7 @@ namespace WebApi.Clients
         {
             this.bus = bus;
         }
+        
         public void SaveInfo(string username)
         {
             var message = "Hello " + username;
