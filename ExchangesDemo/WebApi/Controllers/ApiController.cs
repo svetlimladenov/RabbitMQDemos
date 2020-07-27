@@ -23,5 +23,11 @@ namespace WebApi.Controllers
             this.logger.LogInformation($"Published to {exchange}, message - {message}");
             this.Bus.Publish(exchange, message);
         }
+        
+        protected void Publish<T>(T message)
+        {
+            this.logger.LogInformation($"Published message - {message}");
+            this.Bus.Publish<T>(message);
+        }
     }
 }

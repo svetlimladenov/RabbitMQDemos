@@ -1,11 +1,8 @@
 using System;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Hosting;
-using RabbitMQ.Client;
-using RabbitMQ.Client.Events;
 using Infrastucture;
+using Contracts.Messages;
 
 namespace ConsoleConsumer
 {
@@ -18,7 +15,8 @@ namespace ConsoleConsumer
 
         public override Task StartAsync(CancellationToken cancellationToken)
         {
-            Subscribe("getWeather", OnWeatherGetMessage);
+            //Subscribe("getWeather", OnWeatherGetMessage);
+            Subscribe<GetWeatherMessage>(OnWeatherGetMessage);
             return Task.CompletedTask;
         }
 
@@ -30,6 +28,11 @@ namespace ConsoleConsumer
         public void OnWeatherGetMessage(string message)
         {
             Console.WriteLine(message);
+        }
+
+        public void OnWeatherGetMessage(GetWeatherMessage message)
+        {
+            Console.WriteLine(message.Username);
         }
     }
 }

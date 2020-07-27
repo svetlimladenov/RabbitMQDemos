@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Contracts.Messages;
 using Infrastucture;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -24,10 +25,11 @@ namespace WebApi.Controllers
         [HttpGet]
         public IEnumerable<WeatherForecast> Get([FromQuery]string username)
         {
-            var message = "Hello " + username;
-            var weatherExchange = "getWeather";
-
-            Publish(weatherExchange, message);
+            var message = new GetWeatherMessage()
+            {
+                Username = username
+            };
+            Publish(message);
 
             return new List<WeatherForecast>();
         }

@@ -3,6 +3,7 @@ using System.Text;
 using Infrastucture.Utils;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
+using Newtonsoft.Json;
 
 namespace Infrastucture
 {
@@ -40,16 +41,15 @@ namespace Infrastucture
         public void Subscribe<T>(Action<T> action)
         {
             var exchange = namesConfigurator.GenerateExchangeName(typeof(T));
-
+            channel.ExchangeDeclare(exchange, "fanout");
             var queueName = channel.QueueDeclare().QueueName;
             channel.QueueBind(queueName, exchange, "");
 
             var consumer = new EventingBasicConsumer(channel);
             consumer.Received += (sender,ea) => {
                 var message = Encoding.UTF8.GetString(ea.Body.ToArray());
-                //TODO: Create Object of type T, from the received message
-                //TODO: Use newtownsoft json;
-                action(message);
+                var deserializedMessage = (T)JsonConvert.DeserializeObject(message, typeof(T));
+                action(deserializedMessage);
             };
 
             channel.BasicConsume(queueName, true, consumer);
@@ -58,6 +58,17 @@ namespace Infrastucture
         public void Publish(string exchange, string message)
         {
             var body = Encoding.UTF8.GetBytes(message);
+            this.channel.ExchangeDeclare(exchange, "fanout");
+            this.channel.BasicPublish(exchange, "", null, body);
+        }
+
+        public void Publish<T>(T message)
+        {
+
+            var serializedMessage = JsonConvert.SerializeObject(message);
+            var body = Encoding.UTF8.GetBytes(serializedMessage);
+
+            var exchange = namesConfigurator.GenerateExchangeName(typeof(T));
             this.channel.ExchangeDeclare(exchange, "fanout");
             this.channel.BasicPublish(exchange, "", null, body);
         }

@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Publisher", "Publisher\Publ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastucture", "Infrastucture\Infrastucture.csproj", "{F234A326-7CDD-4A2A-A9FB-8FEEF66781CA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "Contracts\Contracts.csproj", "{D7A1C868-80EF-48D3-81EB-4979AAB9D07A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,5 +74,17 @@ Global
 		{F234A326-7CDD-4A2A-A9FB-8FEEF66781CA}.Release|x64.Build.0 = Release|Any CPU
 		{F234A326-7CDD-4A2A-A9FB-8FEEF66781CA}.Release|x86.ActiveCfg = Release|Any CPU
 		{F234A326-7CDD-4A2A-A9FB-8FEEF66781CA}.Release|x86.Build.0 = Release|Any CPU
+		{D7A1C868-80EF-48D3-81EB-4979AAB9D07A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7A1C868-80EF-48D3-81EB-4979AAB9D07A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7A1C868-80EF-48D3-81EB-4979AAB9D07A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D7A1C868-80EF-48D3-81EB-4979AAB9D07A}.Debug|x64.Build.0 = Debug|Any CPU
+		{D7A1C868-80EF-48D3-81EB-4979AAB9D07A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D7A1C868-80EF-48D3-81EB-4979AAB9D07A}.Debug|x86.Build.0 = Debug|Any CPU
+		{D7A1C868-80EF-48D3-81EB-4979AAB9D07A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7A1C868-80EF-48D3-81EB-4979AAB9D07A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7A1C868-80EF-48D3-81EB-4979AAB9D07A}.Release|x64.ActiveCfg = Release|Any CPU
+		{D7A1C868-80EF-48D3-81EB-4979AAB9D07A}.Release|x64.Build.0 = Release|Any CPU
+		{D7A1C868-80EF-48D3-81EB-4979AAB9D07A}.Release|x86.ActiveCfg = Release|Any CPU
+		{D7A1C868-80EF-48D3-81EB-4979AAB9D07A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

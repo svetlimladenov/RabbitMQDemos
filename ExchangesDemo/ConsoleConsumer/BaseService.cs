@@ -23,5 +23,12 @@ namespace ConsoleConsumer
         {
             bus.Subscribe(exchange, action);
         }
+
+        protected void Subscribe<T>(Action<T> action)
+        {
+            bus.Subscribe<T>(action);
+        }
+
+
     }
 }
