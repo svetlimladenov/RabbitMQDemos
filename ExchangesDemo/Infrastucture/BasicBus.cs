@@ -42,7 +42,7 @@ namespace Infrastucture
         {
             var exchange = namesConfigurator.GenerateExchangeName(typeof(T));
             channel.ExchangeDeclare(exchange, "fanout");
-            var queueName = channel.QueueDeclare().QueueName;
+            var queueName = channel.QueueDeclare(exchange, true, false, false);
             channel.QueueBind(queueName, exchange, "");
 
             var consumer = new EventingBasicConsumer(channel);
@@ -59,7 +59,7 @@ namespace Infrastucture
         {
             var body = Encoding.UTF8.GetBytes(message);
             this.channel.ExchangeDeclare(exchange, "fanout");
-            this.channel.BasicPublish(exchange, "", null, body);
+            this.channel.BasicPublish(exchange, exchange, null, body);
         }
 
         public void Publish<T>(T message)
@@ -70,7 +70,7 @@ namespace Infrastucture
 
             var exchange = namesConfigurator.GenerateExchangeName(typeof(T));
             this.channel.ExchangeDeclare(exchange, "fanout");
-            this.channel.BasicPublish(exchange, "", null, body);
+            this.channel.BasicPublish(exchange, exchange, null, body);
         }
 
         public void Dispose()
