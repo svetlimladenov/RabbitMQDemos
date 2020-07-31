@@ -1,10 +1,9 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Infrastucture;
 using Microsoft.Extensions.Hosting;
 
-namespace ConsoleConsumer
+namespace Infrastucture
 {
     public abstract class BaseService : IHostedService
     {
@@ -28,7 +27,5 @@ namespace ConsoleConsumer
         {
             bus.Subscribe<T>(action);
         }
-
-
     }
 }

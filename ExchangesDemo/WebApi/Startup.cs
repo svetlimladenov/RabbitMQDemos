@@ -29,7 +29,7 @@ namespace WebApi
         {
             services.AddControllers();
 
-            services.AddSingleton<IBus,BasicBus>();
+            services.AddSingleton<IBus, BasicBus>();
             services.AddSingleton<WeatherClient>();
         }
 

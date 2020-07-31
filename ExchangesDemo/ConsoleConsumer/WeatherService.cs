@@ -15,7 +15,6 @@ namespace ConsoleConsumer
 
         public override Task StartAsync(CancellationToken cancellationToken)
         {
-            //Subscribe("getWeather", OnWeatherGetMessage);
             Subscribe<GetWeatherMessage>(OnWeatherGetMessage);
             return Task.CompletedTask;
         }
