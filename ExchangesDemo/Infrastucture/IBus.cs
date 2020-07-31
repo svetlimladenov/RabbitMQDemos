@@ -2,7 +2,7 @@ using System;
 
 namespace Infrastucture
 {
-    public interface IBus
+    public interface IBus : IDisposable
     {
         void Publish(string exchange, string message);
 

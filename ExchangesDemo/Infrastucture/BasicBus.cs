@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace Infrastucture
 {
-    public class BasicBus : IBus, IDisposable
+    public class BasicBus : IBus
     {
         private readonly IModel channel;
         private readonly IConnection connection;
