@@ -29,6 +29,7 @@ namespace WebApi.Controllers
             {
                 Username = username
             };
+
             Publish(message);
 
             return new List<WeatherForecast>();
